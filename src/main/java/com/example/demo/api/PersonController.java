@@ -46,4 +46,15 @@ public class PersonController {
                              .orElse(null);
     }
 
+    //delete resourse from the server
+    @DeleteMapping(path = "{id}")
+    public void deletePersonById(@PathVariable("id") UUID id) {
+        personService.deletePerson(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updatePersonById(@PathVariable("id") @RequestBody UUID id, Person personToUpdate) {
+        personService.updatePersonById(id, personToUpdate);
+    }
+
 }
