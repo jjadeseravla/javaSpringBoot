@@ -5,6 +5,8 @@ import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 //like your node app express app file.  shows you endpoints
@@ -28,7 +30,7 @@ public class PersonController {
     //to tell spring this method will be used as a POST request
     @PostMapping
     //want to take requestbody and put it inside this person
-    public void addPerson(@RequestBody Person person) {
+    public void addPerson(@RequestBody @Valid @NotNull Person person) {
         personService.addPerson(person);
     }
 
@@ -53,7 +55,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePersonById(@PathVariable("id") @RequestBody UUID id, Person personToUpdate) {
+    public void updatePersonById(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Person personToUpdate) {
         personService.updatePersonById(id, personToUpdate);
     }
 
