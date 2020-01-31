@@ -3,10 +3,10 @@ package com.example.demo.api;
 import com.example.demo.model.Person;
 import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+//like your node app express app file.  shows you endpoints
 
 //give it the url you want to POST to be on
 //this is your first endpoint with springboot
@@ -29,6 +29,12 @@ public class PersonController {
     //want to take requestbody and put it inside this person
     public void addPerson(@RequestBody Person person) {
         personService.addPerson(person);
+    }
+
+    //this method served as a GET request
+    @GetMapping
+    public List<Person> getAllPeople() {
+        return personService.getAllPeople();
     }
 
 }
