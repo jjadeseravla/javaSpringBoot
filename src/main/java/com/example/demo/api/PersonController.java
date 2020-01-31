@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 //like your node app express app file.  shows you endpoints
 
 //give it the url you want to POST to be on
@@ -35,6 +36,14 @@ public class PersonController {
     @GetMapping
     public List<Person> getAllPeople() {
         return personService.getAllPeople();
+    }
+
+    //pathvariable is how to get id from path to put in the url when doing the GET
+    //want the id in the path.  turning path id into a UUID type
+    @GetMapping(path = "{id}")
+    public Person getPersonById(@PathVariable("id") UUID id) {
+        return personService.getPersonById(id)
+                             .orElse(null);
     }
 
 }
