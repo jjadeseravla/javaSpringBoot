@@ -20,7 +20,7 @@ public class PersonService {
     //as we can have multiple implementations of PersonDao interface,
     //we have to have way of distinguishing between them,
     //so use qualifier and give it a name
-    public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
+    public PersonService(@Qualifier("postgres") PersonDao personDao) {
         this.personDao = personDao;
     }
 
