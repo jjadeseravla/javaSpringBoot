@@ -1,0 +1,10 @@
+#where we define all connection details to our db
+
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/demodb
+    username: postgres
+    password: password
+#    everytime you want to execute a query against our db.  pool-size is the number of
+#    connections you can have.
+    pool-size: 30
